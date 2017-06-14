@@ -369,7 +369,8 @@
           
           最近在写一个Android的大作业项目，迫于DDL的驱动= =，学了学安卓的使用发现我们的项目要用到大量的ListView模式，于是必须要好好学习一下了！
 但是发现网上的教程还是比较难懂的，于是经过了一系列的试炼，终于做成了！
-第一步 创建一个Fragment或者ActivityFragment或者
+第一步 创建一个Fragment或者ActivityFragment或者Activity是用来承载界面上的ListView的。我们知道ListView其实是一个小组件，那这个组件需要放到一个容器中去承载。这里我创建的是Fragment。
+Fragment创建好了以后先什么都不用写，找到对应的xml文件，在上面添加一个ListView并且为ListView设定好ID后即可
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -526,7 +527,13 @@
 解析中文英文混杂的字幕，将英文或者中文单独提取出来
 
 工具比较简陋，字幕匹配用了一个外国SubDB的API
-但是可能是不太全吧感觉，匹配度虽然是100%但是能匹配到的不是特别多，以后有时间还会
+但是可能是不太全吧感觉，匹配度虽然是100%但是能匹配到的不是特别多，以后有时间还会继续修改这个项目吧，加一些中文匹配之类的
+
+Github: https://github.com/WJerry0227/SubtitleUtil
+
+Subtitle UtilSubtitle Util has a list of functions below
+
+1 Subtitle Transfe
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -681,7 +688,12 @@
 今天不知道怎么回事一直创建不出来，右下角一直加载不出来
 找了半天找到了解决办法
 Next，这里在Properties中添加一个参数archetypeCatalog=internal
-不加这个参数，在maven生成骨架的时候将会非常慢，
+不加这个参数，在maven生成骨架的时候将会非常慢，有时候会直接卡住。
+来自网上的解释：
+
+archetypeCatalog表示插件使用的archetype元数据，不加这个参数时默认为remote，local，即中央仓库archetype元数据，由于中央仓库的archetype太多了，所以导致很慢，指定internal来表示仅使用内部元数据。
+
+这种
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -834,7 +846,7 @@ Next，这里在Properties中添加一个参数archetypeCatalog=internal
           
           ##问题不知道是什么原因，不止是安装sh,安装Django，使用pip安装任何包都出现这个问题安装不了
 最后查找了半天终于给我找到解决方案了！
-##报错1234567891011121314151617181920212223242526272829303132333435363738pip ins
+##报错1234567891011121314151617181920212223242526272829303132333435363738pip install shDownloading/unpacking shCleaning up...Exception:Traceback (most recent call last):File "D:\developer\Python27\lib\site-packages\pip-1.4.1-py2.7
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -987,7 +999,9 @@ Next，这里在Properties中添加一个参数archetypeCatalog=internal
           
           在做大作业的过程中用了javafx,然后想实现类似股票的颜色列表，一个tableview，如果股票涨了就用红色，跌了就用绿色。
 一开始一直以为是TableCell已经被TextField重写，所以产生了奇怪的bug
-结果写了很久找了很多办法但是都有异常，最后请教大神才知道是一行中格式有double和
+结果写了很久找了很多办法但是都有异常，最后请教大神才知道是一行中格式有double和string两种，所以Item要用Object这个类就好了
+最后附上重写的TableCell
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051private cl
           ...
           <!--noindex-->
           <div class="post-button text-center">
