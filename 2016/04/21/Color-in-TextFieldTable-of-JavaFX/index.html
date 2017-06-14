@@ -1,0 +1,737 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Bugs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="在做大作业的过程中用了javafx,然后想实现类似股票的颜色列表，一个tableview，如果股票涨了就用红色，跌了就用绿色。 一开始一直以为是TableCell已经被TextField重写，所以产生了奇怪的bug 结果写了很久找了很多办法但是都有异常，最后请教大神才知道是一行中格式有double和string两种，所以Item要用Object这个类就好了 最后附上重写的TableCell 123">
+<meta name="keywords" content="Java,Bugs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Color in TextFieldTable of JavaFX">
+<meta property="og:url" content="http://WJerry0227.github.io/2016/04/21/Color-in-TextFieldTable-of-JavaFX/index.html">
+<meta property="og:site_name" content="Jerry Wang&#39;s Blog">
+<meta property="og:description" content="在做大作业的过程中用了javafx,然后想实现类似股票的颜色列表，一个tableview，如果股票涨了就用红色，跌了就用绿色。 一开始一直以为是TableCell已经被TextField重写，所以产生了奇怪的bug 结果写了很久找了很多办法但是都有异常，最后请教大神才知道是一行中格式有double和string两种，所以Item要用Object这个类就好了 最后附上重写的TableCell 123">
+<meta property="og:updated_time" content="2017-06-14T08:07:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Color in TextFieldTable of JavaFX">
+<meta name="twitter:description" content="在做大作业的过程中用了javafx,然后想实现类似股票的颜色列表，一个tableview，如果股票涨了就用红色，跌了就用绿色。 一开始一直以为是TableCell已经被TextField重写，所以产生了奇怪的bug 结果写了很久找了很多办法但是都有异常，最后请教大神才知道是一行中格式有double和string两种，所以Item要用Object这个类就好了 最后附上重写的TableCell 123">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://WJerry0227.github.io/2016/04/21/Color-in-TextFieldTable-of-JavaFX/"/>
+
+
+
+
+
+  <title>Color in TextFieldTable of JavaFX | Jerry Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jerry Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2016/04/21/Color-in-TextFieldTable-of-JavaFX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerry Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Color in TextFieldTable of JavaFX</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-21T20:17:28+08:00">
+                2016-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programing/" itemprop="url" rel="index">
+                    <span itemprop="name">Programing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/21/Color-in-TextFieldTable-of-JavaFX/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/04/21/Color-in-TextFieldTable-of-JavaFX/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在做大作业的过程中用了javafx,然后想实现类似股票的颜色列表，一个tableview，如果股票涨了就用<strong>红色</strong>，跌了就用<strong>绿色</strong>。</p>
+<p>一开始一直以为是TableCell已经被TextField重写，所以产生了奇怪的bug</p>
+<p>结果写了很久找了很多办法但是都有异常，最后请教大神才知道是一行中格式有double和string两种，所以<strong>Item要用Object这个类</strong>就好了</p>
+<p>最后附上重写的TableCell</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">TaskCellFactory</span> <span class="keyword">implements</span> <span class="title">Callback</span>&lt;<span class="title">TableColumn</span>&lt;<span class="title">Task</span>, <span class="title">Object</span>&gt;, <span class="title">TableCell</span>&lt;<span class="title">Task</span>, <span class="title">Object</span>&gt;&gt; </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> TableCell&lt;Task, Object&gt; <span class="title">call</span><span class="params">(TableColumn&lt;Task, Object&gt; param)</span> </span>&#123;</div><div class="line">        TextFieldTableCell&lt;Task, Object&gt; cell = <span class="keyword">new</span> TextFieldTableCell&lt;Task, Object&gt;() &#123;</div><div class="line">            ObservableValue ov;</div><div class="line"></div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateItem</span><span class="params">(Object item, <span class="keyword">boolean</span> empty)</span> </span>&#123;</div><div class="line">                <span class="keyword">super</span>.updateItem(item, empty);</div><div class="line">                <span class="keyword">if</span> (!isEmpty()) &#123;</div><div class="line">                    <span class="keyword">double</span> up = Double.valueOf(<span class="keyword">this</span>.getTableView().getColumns().get(<span class="number">3</span>).getCellData(getIndex()).toString());</div><div class="line">                    <span class="keyword">if</span> (up &lt; <span class="number">0</span>) &#123;</div><div class="line">                        <span class="keyword">this</span>.setTextFill(Color.GREEN);</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (up &gt; <span class="number">0</span>) &#123;</div><div class="line">                        <span class="keyword">this</span>.setTextFill(Color.RED);</div><div class="line">                    &#125;<span class="keyword">else</span></div><div class="line">                        <span class="keyword">this</span>.setTextFill(Color.WHITE);</div><div class="line"></div><div class="line">                    setText(item.toString());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        cell.setOnMouseClicked((MouseEvent t) -&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (t.getClickCount() == <span class="number">2</span>) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    <span class="keyword">int</span> index = secondTable.getFocusModel().getFocusedIndex();</div><div class="line">                    String id = ((DSecond) secondTable.getItems().get(index)).getIdnumber();</div><div class="line">                    main.CFIRST.setCollectionID(id);</div><div class="line">                    swiftController(id, <span class="keyword">new</span> TimeFilter(timeHelper.getStart(), timeHelper.getEnd()));</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (t.getClickCount() == <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">int</span> index = secondTable.getFocusModel().getFocusedIndex();</div><div class="line">                String id = ((DSecond) secondTable.getItems().get(index)).getIdnumber();</div><div class="line">                main.CFIRST.setCollectionID(id);</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    setGraph(id, <span class="keyword">new</span> TimeFilter(timeHelper.getStart(), timeHelper.getEnd()));</div><div class="line">                &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="comment">//cell.setContextMenu(taskContextMenu);</span></div><div class="line">        <span class="keyword">return</span> cell;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Bugs/" rel="tag"># Bugs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/11/Python-Pip-install-Ascii-Error/" rel="prev" title="Python&Pip Install Ascii Error">
+                Python&Pip Install Ascii Error <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400"
+               alt="Jerry Wang" />
+          <p class="site-author-name" itemprop="name">Jerry Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">How you took the sourest lemon that life has to offer and turned it into something resembling lemonade.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry Wang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://WJerry0227.github.io/2016/04/21/Color-in-TextFieldTable-of-JavaFX/';
+          this.page.identifier = '2016/04/21/Color-in-TextFieldTable-of-JavaFX/';
+          this.page.title = 'Color in TextFieldTable of JavaFX';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

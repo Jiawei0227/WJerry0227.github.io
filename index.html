@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -86,19 +86,22 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
 
 
 
 
 
 
+<meta name="description" content="How you took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jerry Wang&#39;s Blog">
 <meta property="og:url" content="http://WJerry0227.github.io/index.html">
 <meta property="og:site_name" content="Jerry Wang&#39;s Blog">
+<meta property="og:description" content="How you took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jerry Wang&#39;s Blog">
+<meta name="twitter:description" content="How you took the sourest lemon that life has to offer and turned it into something resembling lemonade.">
 
 
 
@@ -150,7 +153,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -200,7 +203,17 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
           </a>
         </li>
       
@@ -210,7 +223,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -253,12 +266,12 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2017/06/14/Listview教程/">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2017/06/14/Listview-Guide/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jerry Wang">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -272,7 +285,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/14/Listview教程/" itemprop="url">ListView Android 教程</a></h1>
+                <a class="post-title-link" href="/2017/06/14/Listview-Guide/" itemprop="url">ListView Android Guide</a></h1>
         
 
         <div class="post-meta">
@@ -282,7 +295,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-14T14:26:45+08:00">
                 2017-06-14
@@ -295,8 +308,41 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programing/" itemprop="url" rel="index">
+                    <span itemprop="name">Programing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/14/Listview-Guide/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/14/Listview-Guide/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -321,30 +367,633 @@
       
         
           
-            <p>最近在写一个Android的大作业项目，迫于DDL的驱动= =，学了学安卓的使用<br>发现我们的项目要用到大量的ListView模式，于是必须要好好学习一下了！</p>
-<p>但是发现网上的教程还是比较难懂的，于是经过了一系列的试炼，终于做成了！</p>
-<h2 id="第一步-创建一个Fragment或者Activity"><a href="#第一步-创建一个Fragment或者Activity" class="headerlink" title="第一步 创建一个Fragment或者Activity"></a>第一步 创建一个Fragment或者Activity</h2><p>Fragment或者Activity是用来承载界面上的ListView的。我们知道ListView其实是一个小组件，那这个组件需要放到一个容器中去承载。这里我创建的是Fragment。</p>
-<p>Fragment创建好了以后先什么都不用写，找到对应的xml文件，在上面添加一个ListView并且为ListView设定好ID后即可</p>
-<p><strong>效果图</strong>：<br><img src="http://img.blog.csdn.net/20170611013645080?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2ppYXdlaTAyMjc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p><strong>对应Fragment的xml文件</strong>：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">FrameLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    <span class="attr">xmlns:tools</span>=<span class="string">"http://schemas.android.com/tools"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">tools:context</span>=<span class="string">"wjw.nju.gitlab_android.fragment.ClassInfoFragment"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ListView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/class_listview_info"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">FrameLayout</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="第二步-创建一个Item"><a href="#第二步-创建一个Item" class="headerlink" title="第二步 创建一个Item"></a>第二步 创建一个Item</h2><p>我们要为List中的每一个列创建一个类似于模板的Item对象。以后当我们完成Item后会把Item中的对象插入到ListView中变成一个列表</p>
-<p><strong>Item对象</strong>：<br><img src="http://img.blog.csdn.net/20170611014048344?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2ppYXdlaTAyMjc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>这里的一个小Item到之后就会填充到list中成为一个Item</p>
-<p><strong>对应的xml文件</strong>：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">RelativeLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"80dp"</span></div><div class="line">    <span class="attr">android:minHeight</span>=<span class="string">"80dp"</span></div><div class="line">    <span class="attr">android:orientation</span>=<span class="string">"vertical"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/imageView3"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"40dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span></div><div class="line">        <span class="attr">android:layout_alignParentLeft</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_alignParentStart</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_centerVertical</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"17dp"</span></div><div class="line">        <span class="attr">android:layout_marginStart</span>=<span class="string">"17dp"</span></div><div class="line">        <span class="attr">app:srcCompat</span>=<span class="string">"@mipmap/class_classinfo"</span> /&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/class_className"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_centerVertical</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_marginLeft</span>=<span class="string">"19dp"</span></div><div class="line">        <span class="attr">android:layout_marginStart</span>=<span class="string">"19dp"</span></div><div class="line">        <span class="attr">android:layout_toEndOf</span>=<span class="string">"@+id/imageView3"</span></div><div class="line">        <span class="attr">android:layout_toRightOf</span>=<span class="string">"@+id/imageView3"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"TextView"</span></div><div class="line">        <span class="attr">android:textSize</span>=<span class="string">"18sp"</span> /&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">ImageView</span></span></div><div class="line">        <span class="attr">android:id</span>=<span class="string">"@+id/class_classInfo_detail"</span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"40dp"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"40dp"</span></div><div class="line">        <span class="attr">android:layout_alignParentEnd</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_alignParentRight</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_centerVertical</span>=<span class="string">"true"</span></div><div class="line">        <span class="attr">android:layout_marginEnd</span>=<span class="string">"13dp"</span></div><div class="line">        <span class="attr">android:layout_marginRight</span>=<span class="string">"13dp"</span></div><div class="line">        <span class="attr">app:srcCompat</span>=<span class="string">"@mipmap/class_info_arrow"</span> /&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">RelativeLayout</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="第三步-创建一个Adapter"><a href="#第三步-创建一个Adapter" class="headerlink" title="第三步 创建一个Adapter"></a>第三步 创建一个Adapter</h2><p>Adapter类似于一个Item的填充器，它匹配一个Item，我们可以将这个Item的列表放到adapter中。然后将adapter封装起来<br><strong>ClassInfoAdapter</strong>：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> wjw.nju.gitlab_android.adapter;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.support.v4.app.FragmentManager;</div><div class="line"><span class="keyword">import</span> android.support.v4.app.FragmentTransaction;</div><div class="line"><span class="keyword">import</span> android.view.LayoutInflater;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"><span class="keyword">import</span> android.view.ViewGroup;</div><div class="line"><span class="keyword">import</span> android.widget.BaseAdapter;</div><div class="line"><span class="keyword">import</span> android.widget.ImageView;</div><div class="line"><span class="keyword">import</span> android.widget.TextView;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.R;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.adapter.Item.CourseInfoItem;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.apiservice.apiVO.CourseVO;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.fragment.StudentListFragment;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by wangjiawei on 2017/6/8.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassInfoAdapter</span> <span class="keyword">extends</span> <span class="title">BaseAdapter</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> List&lt;CourseInfoItem&gt; courseInfos;</div><div class="line">    <span class="keyword">private</span> Context context;</div><div class="line">    <span class="keyword">private</span> LayoutInflater layoutInflater;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ClassInfoAdapter</span><span class="params">(List&lt;CourseInfoItem&gt; indexInfoItems,Context context )</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.courseInfos = indexInfoItems;</div><div class="line">        <span class="keyword">this</span>.context = context;</div><div class="line">        <span class="keyword">this</span>.layoutInflater = LayoutInflater.from(context);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCount</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> courseInfos.size();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getItem</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> courseInfos.get(position);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getItemId</span><span class="params">(<span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> position;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(convertView == <span class="keyword">null</span>)&#123;</div><div class="line">            convertView = layoutInflater.inflate(R.layout.class_info_listview_item,<span class="keyword">null</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        TextView title = (TextView)convertView.findViewById(R.id.class_className);</div><div class="line">        title.setText(courseInfos.get(position).getName());</div><div class="line"></div><div class="line">        ImageView arrow = (ImageView) convertView.findViewById(R.id.class_classInfo_detail);</div><div class="line">        arrow.setOnClickListener(courseInfos.get(position).getListener());</div><div class="line"></div><div class="line">        <span class="keyword">return</span> convertView;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>类需要实现BaseAdapter基类，含有一个List&lt; item&gt;的成员，这个成员将来就是你的列表中的属性</p>
-<p>在getView()方法中，我们初始化这个Item的xml中的内容，将相应的文本内容填充进去。</p>
-<h2 id="第四步-在Fragment中初始化ListView"><a href="#第四步-在Fragment中初始化ListView" class="headerlink" title="第四步 在Fragment中初始化ListView"></a>第四步 在Fragment中初始化ListView</h2><p>最后我们回到最初创建的Fragment中<br>进行ListView的初始化。通过view获取到ListView<br>调用ListView特有的setAdapter()方法将Item创建进去。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> wjw.nju.gitlab_android.fragment;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.net.Uri;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.os.Handler;</div><div class="line"><span class="keyword">import</span> android.os.Message;</div><div class="line"><span class="keyword">import</span> android.support.v4.app.Fragment;</div><div class="line"><span class="keyword">import</span> android.support.v4.app.FragmentManager;</div><div class="line"><span class="keyword">import</span> android.support.v4.app.FragmentTransaction;</div><div class="line"><span class="keyword">import</span> android.view.LayoutInflater;</div><div class="line"><span class="keyword">import</span> android.view.View;</div><div class="line"><span class="keyword">import</span> android.view.ViewGroup;</div><div class="line"><span class="keyword">import</span> android.widget.ListView;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.stream.Collector;</div><div class="line"><span class="keyword">import</span> java.util.stream.Collectors;</div><div class="line"></div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.R;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.activity.TeacherMenu;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.adapter.ClassInfoAdapter;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.adapter.Item.CourseInfoItem;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.apiservice.GetAllClassService;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.apiservice.apiVO.CourseVO;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.apiservice.apiVO.LoginVO;</div><div class="line"><span class="keyword">import</span> wjw.nju.gitlab_android.util.Base64EncodeUtil;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassInfoFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> LoginVO loginVO;</div><div class="line">    <span class="keyword">private</span> List&lt;CourseVO&gt; courseVOs;</div><div class="line">    <span class="keyword">private</span> ListView classInfoView;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> View <span class="title">onCreateView</span><span class="params">(LayoutInflater inflater, ViewGroup container,</span></span></div><div class="line">                             Bundle savedInstanceState) &#123;</div><div class="line">        <span class="comment">// Inflate the layout for this fragment</span></div><div class="line">        View view =  inflater.inflate(R.layout.fragment_class_info, container, <span class="keyword">false</span>);</div><div class="line">        initVO(view);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> view;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initVO</span><span class="params">(View view)</span></span>&#123;</div><div class="line">        Bundle bundle = getArguments();<span class="comment">//从activity传过来的Bundle</span></div><div class="line">        <span class="keyword">if</span>(bundle!=<span class="keyword">null</span>)&#123;</div><div class="line">            loginVO = (LoginVO) bundle.getSerializable(TeacherMenu.LOGIN_VO);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Handler h = <span class="keyword">new</span> Handler()&#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span></span>&#123;</div><div class="line">                courseVOs = (List&lt;CourseVO&gt;) msg.obj;</div><div class="line">                initComponent(view);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">        GetAllClassService getAllClassService = <span class="keyword">new</span> GetAllClassService(h, Base64EncodeUtil.getToken(loginVO.getUsername(),loginVO.getPassword()));</div><div class="line">        getAllClassService.execute();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initComponent</span><span class="params">(View view)</span></span>&#123;</div><div class="line">        List&lt;CourseInfoItem&gt; lists = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">        <span class="keyword">for</span> (CourseVO c: courseVOs) &#123;</div><div class="line">            lists.add(<span class="keyword">new</span> CourseInfoItem(c.getId(),c.getName(), e-&gt;&#123;</div><div class="line">                FragmentManager fm = getFragmentManager();</div><div class="line">                FragmentTransaction ft = fm.beginTransaction();</div><div class="line"></div><div class="line">                ft.replace(R.id.frame_main,StudentListFragment.getInstatnce(c.getId(),loginVO)).commit();</div><div class="line">            &#125;));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        classInfoView = (ListView) view.findViewById(R.id.class_listview_info);</div><div class="line"></div><div class="line">        ClassInfoAdapter c = <span class="keyword">new</span> ClassInfoAdapter(lists,<span class="keyword">this</span>.getActivity());</div><div class="line">        classInfoView.setAdapter(c);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>主要的方法在initComponent中，其他的是和登录有关的一些代码。</p>
-<p>以上完成后运行你的程序<br>结果图：<br><img src="http://img.blog.csdn.net/20170611015306329?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2ppYXdlaTAyMjc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="运行结果描述"></p>
-<hr>
-<p>至此，我们就完成了ListView的创建，初始化以及运行的全过程。</p>
-<p>感谢阅读！</p>
-<p>以上素材取自Android一个项目，Github的安卓客户端制作<br>Github源码： <a href="https://github.com/WJerry0227/GitLab_Androidapp" target="_blank" rel="external">https://github.com/WJerry0227/GitLab_Androidapp</a></p>
+          最近在写一个Android的大作业项目，迫于DDL的驱动= =，学了学安卓的使用发现我们的项目要用到大量的ListView模式，于是必须要好好学习一下了！
+但是发现网上的教程还是比较难懂的，于是经过了一系列的试炼，终于做成了！
+第一步 创建一个Fragment或者ActivityFragment或者
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/14/Listview-Guide/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2017/06/07/Subtitle-Util-Github/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerry Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/07/Subtitle-Util-Github/" itemprop="url">Subtitle Util Github</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-07T21:32:27+08:00">
+                2017-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programing/" itemprop="url" rel="index">
+                    <span itemprop="name">Programing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/07/Subtitle-Util-Github/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/07/Subtitle-Util-Github/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          这几天出于兴趣写了一个关于字幕自动匹配下载和字幕修改的工具
+
+输入文件路径就可以自动下载出来对应匹配的字幕
+解析中文英文混杂的字幕，将英文或者中文单独提取出来
+
+工具比较简陋，字幕匹配用了一个外国SubDB的API
+但是可能是不太全吧感觉，匹配度虽然是100%但是能匹配到的不是特别多，以后有时间还会
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/06/07/Subtitle-Util-Github/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2017/02/12/IDEA-Maven-web-Project/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerry Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/12/IDEA-Maven-web-Project/" itemprop="url">IDEA Maven Web Project</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-12T21:40:24+08:00">
+                2017-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programing/" itemprop="url" rel="index">
+                    <span itemprop="name">Programing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/12/IDEA-Maven-web-Project/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/02/12/IDEA-Maven-web-Project/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          原来在使用idea的时候没有任何问题，创建webapp也很顺利。
+今天不知道怎么回事一直创建不出来，右下角一直加载不出来
+找了半天找到了解决办法
+Next，这里在Properties中添加一个参数archetypeCatalog=internal
+不加这个参数，在maven生成骨架的时候将会非常慢，
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/12/IDEA-Maven-web-Project/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2016/05/11/Python-Pip-install-Ascii-Error/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerry Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/05/11/Python-Pip-install-Ascii-Error/" itemprop="url">Python&Pip Install Ascii Error</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-11T13:45:20+08:00">
+                2016-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programing/" itemprop="url" rel="index">
+                    <span itemprop="name">Programing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/05/11/Python-Pip-install-Ascii-Error/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/11/Python-Pip-install-Ascii-Error/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          1234567891011121314151617181920212223242526272829303132333435363738pip install shDownloading/unpacking shCleaning up...Exception:Traceback (most recen
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/05/11/Python-Pip-install-Ascii-Error/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2016/04/21/Color-in-TextFieldTable-of-JavaFX/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerry Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/04/21/Color-in-TextFieldTable-of-JavaFX/" itemprop="url">Color in TextFieldTable of JavaFX</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-21T20:17:28+08:00">
+                2016-04-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programing/" itemprop="url" rel="index">
+                    <span itemprop="name">Programing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/21/Color-in-TextFieldTable-of-JavaFX/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/04/21/Color-in-TextFieldTable-of-JavaFX/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在做大作业的过程中用了javafx,然后想实现类似股票的颜色列表，一个tableview，如果股票涨了就用红色，跌了就用绿色。
+一开始一直以为是TableCell已经被TextField重写，所以产生了奇怪的bug
+结果写了很久找了很多办法但是都有异常，最后请教大神才知道是一行中格式有double和
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/04/21/Color-in-TextFieldTable-of-JavaFX/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -410,11 +1059,11 @@
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400"
                alt="Jerry Wang" />
           <p class="site-author-name" itemprop="name">Jerry Wang</p>
            
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">How you took the sourest lemon that life has to offer and turned it into something resembling lemonade.</p>
           
         </div>
         <nav class="site-state motion-element">
@@ -422,22 +1071,31 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
           
 
           
             
             
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">Tags</span>
-              
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
             </div>
           
 
@@ -486,7 +1144,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
@@ -587,6 +1245,14 @@
 
   
 
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
 
   
 
