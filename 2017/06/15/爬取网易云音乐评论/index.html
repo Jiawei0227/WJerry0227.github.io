@@ -1,0 +1,784 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python,Github,SearchEngine," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Intro一直想自己动手用框架搭起来一个搜索引擎，但是也一直不知道从哪里开始下手比较好。 最近一直在网易云音乐上听歌，决定从网易云上把评论全部爬下来，用评论做一个垂直搜索">
+<meta name="keywords" content="Python,Github,SearchEngine">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬取网易云音乐评论">
+<meta property="og:url" content="http://WJerry0227.github.io/2017/06/15/爬取网易云音乐评论/index.html">
+<meta property="og:site_name" content="Jerry Wang&#39;s Blog">
+<meta property="og:description" content="Intro一直想自己动手用框架搭起来一个搜索引擎，但是也一直不知道从哪里开始下手比较好。 最近一直在网易云音乐上听歌，决定从网易云上把评论全部爬下来，用评论做一个垂直搜索">
+<meta property="og:image" content="http://wjerry0227.github.io/source/images/comment1.png">
+<meta property="og:image" content="http://wjerry0227.github.io/source/images/comment2.png">
+<meta property="og:updated_time" content="2017-06-15T11:14:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="爬取网易云音乐评论">
+<meta name="twitter:description" content="Intro一直想自己动手用框架搭起来一个搜索引擎，但是也一直不知道从哪里开始下手比较好。 最近一直在网易云音乐上听歌，决定从网易云上把评论全部爬下来，用评论做一个垂直搜索">
+<meta name="twitter:image" content="http://wjerry0227.github.io/source/images/comment1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://WJerry0227.github.io/2017/06/15/爬取网易云音乐评论/"/>
+
+
+
+
+
+  <title>爬取网易云音乐评论 | Jerry Wang's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jerry Wang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2017/06/15/爬取网易云音乐评论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jerry Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jerry Wang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">爬取网易云音乐评论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T18:44:18+08:00">
+                2017-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programing/" itemprop="url" rel="index">
+                    <span itemprop="name">Programing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/15/爬取网易云音乐评论/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/15/爬取网易云音乐评论/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>一直想自己动手用框架搭起来一个搜索引擎，但是也一直不知道从哪里开始下手比较好。</p>
+<p>最近一直在网易云音乐上听歌，决定从网易云上把评论全部爬下来，用评论做一个垂直搜索</p>
+<a id="more"></a>
+<h2 id="Path"><a href="#Path" class="headerlink" title="Path"></a>Path</h2><p>说干就开始吧 首先第一步得先把<strong>网易云上的评论爬下来</strong>吧，没有评论资源怎么开始干活啊！</p>
+<p>就拿我最喜欢的歌手 Eason 陈奕迅 做例子吧</p>
+<p>首先打开网页版的网易云音乐 搜索 <strong>十年</strong> 这首歌~<br><a href="https://music.163.com/#/song?id=66842" target="_blank" rel="external">十年-Eason</a></p>
+<p><strong>接下来打开我们浏览器的开发者工具</strong><br><img src="/source/images/comment1.png" alt="163comment1"></p>
+<p>仔细找找以后果然发现了这个API<br><a href="https://music.163.com/weapi/v1/resource/comments/R_SO_4_66842?csrf_token=" target="_blank" rel="external">https://music.163.com/weapi/v1/resource/comments/R_SO_4_66842?csrf_token=</a><br>还是一个挺奇怪的API哈，我们应该能看出来 R_SO_4_66842 是这首歌的ID，翻看了一下其他歌曲，果然 都是通过这个API去获取评论的<br>后面的csrf_token应该是防止跨域访问攻击的，不在我们讨论的范围</p>
+<p>仔细看了一下这个API，需要哪些参数<br><img src="/source/images/comment2.png" alt="163comment2"><br>需要两个什么鬼的参数<br>一个是params 另一个是encSecKey<br>显然网易云为了防止爬虫已经做了很多加密工作了，这就很难受</p>
+<p>正当我走投无路的时候，发现了这篇文章！<br><a href="https://www.zhihu.com/question/36081767" target="_blank" rel="external">https://www.zhihu.com/question/36081767</a></p>
+<p>真大神啊。。。人家已经把参数和什么全部解析出来了<br>于是简单的“改装阅读”一下代码</p>
+<p>EncryptUtil.py:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> base64</div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</div><div class="line"></div><div class="line">modulus = <span class="string">'00e0b509f6259df8642dbc35662901477df22677ec152b5ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef52741d546b8e289dc6935b3ece0462db0a22b8e7'</span></div><div class="line">nonce = <span class="string">'0CoJUm6Qyw8W8jud'</span></div><div class="line">pubKey = <span class="string">'010001'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">createSecretKey</span><span class="params">(size)</span>:</span></div><div class="line">    <span class="keyword">return</span> (<span class="string">''</span>.join(map(<span class="keyword">lambda</span> xx: (hex(ord(xx))[<span class="number">2</span>:]), os.urandom(size))))[<span class="number">0</span>:size]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">aesEncrypt</span><span class="params">(text, secKey)</span>:</span></div><div class="line">    pad = <span class="number">16</span> - len(text) % <span class="number">16</span></div><div class="line">    text = text + pad * chr(pad)</div><div class="line">    encryptor = AES.new(secKey, <span class="number">2</span>, <span class="string">'0102030405060708'</span>)</div><div class="line">    ciphertext = encryptor.encrypt(text)</div><div class="line">    ciphertext = base64.b64encode(ciphertext)</div><div class="line">    <span class="keyword">return</span> ciphertext</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">rsaEncrypt</span><span class="params">(text, pubKey, modulus)</span>:</span></div><div class="line">    text = text[::<span class="number">-1</span>]</div><div class="line">    rs = int(text.encode(<span class="string">'hex'</span>), <span class="number">16</span>)**int(pubKey, <span class="number">16</span>)%int(modulus, <span class="number">16</span>)</div><div class="line">    <span class="keyword">return</span> format(rs, <span class="string">'x'</span>).zfill(<span class="number">256</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getComment</span><span class="params">(requestUrl, offset)</span>:</span></div><div class="line">    username = <span class="string">""</span></div><div class="line">    password = <span class="string">""</span></div><div class="line">    text = &#123;</div><div class="line">        <span class="string">'username'</span>: username,</div><div class="line">        <span class="string">'password'</span>: password,</div><div class="line">        <span class="string">'rememberLogin'</span>: <span class="string">'true'</span>,</div><div class="line">        <span class="string">'offset'</span>: offset</div><div class="line">    &#125;</div><div class="line">    text = json.dumps(text)</div><div class="line">    secKey = createSecretKey(<span class="number">16</span>)</div><div class="line">    encText = aesEncrypt(aesEncrypt(text, nonce), secKey)</div><div class="line">    encSecKey = rsaEncrypt(secKey, pubKey, modulus)</div><div class="line">    data = &#123;</div><div class="line">        <span class="string">'params'</span>: encText,</div><div class="line">        <span class="string">'encSecKey'</span>: encSecKey</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    data_urlencode = urllib.urlencode(data)</div><div class="line">    req = urllib2.Request(url = requestUrl,data =data_urlencode)</div><div class="line">    res_data = urllib2.urlopen(req)</div><div class="line">    res = res_data.read()</div><div class="line">    <span class="keyword">print</span> res</div><div class="line">    file = open(<span class="string">"comment"</span>,<span class="string">"a"</span>)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> comment <span class="keyword">in</span> json.loads(res)[<span class="string">"comments"</span>]:</div><div class="line">        file.write(comment[<span class="string">'content'</span>].encode(<span class="string">'utf-8'</span>))</div><div class="line">        file.write(<span class="string">'\n'</span>)</div><div class="line">    file.write(<span class="string">'--------------------------'</span> + str(offset)+<span class="string">'------------------------'</span>)</div><div class="line"></div><div class="line">    file.close()</div></pre></td></tr></table></figure></p>
+<p>Crawler.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># -*- coding:utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> EncryptUtil</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    offset = <span class="number">31</span></div><div class="line">    requestUrl = <span class="string">"http://music.163.com/weapi/v1/resource/comments/R_SO_4_483671599/"</span></div><div class="line">    EncryptUtil.getComment(requestUrl,offset)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure></p>
+<p>好了，我的初步爬取应该是没什么问题了，下一步就是将数据进行格式化并且写循环将大量歌曲爬取出来了</p>
+<p>那么这些就留给下一次再写了</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/Github/" rel="tag"># Github</a>
+          
+            <a href="/tags/SearchEngine/" rel="tag"># SearchEngine</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/14/Listview-Guide/" rel="next" title="ListView Android Guide">
+                <i class="fa fa-chevron-left"></i> ListView Android Guide
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/11706812?v=3&u=d522fd4fec2c536038e4c4677008e3911ea8899b&s=400"
+               alt="Jerry Wang" />
+          <p class="site-author-name" itemprop="name">Jerry Wang</p>
+           
+              <p class="site-description motion-element" itemprop="description">How you took the sourest lemon that life has to offer and turned it into something resembling lemonade.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/WJerry0227" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Path"><span class="nav-number">2.</span> <span class="nav-text">Path</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jerry Wang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://wjerry0227.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://WJerry0227.github.io/2017/06/15/爬取网易云音乐评论/';
+          this.page.identifier = '2017/06/15/爬取网易云音乐评论/';
+          this.page.title = '爬取网易云音乐评论';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wjerry0227.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
