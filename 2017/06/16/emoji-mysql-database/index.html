@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mysql,Server," />
+  <meta name="keywords" content="Mysql," />
 
 
 
@@ -93,19 +93,17 @@
 
 
 
-<meta name="description" content="阿里云服务器端口连接一直想自己弄一台服务器，就在阿里云上买了学生价的服务器，还是蛮便宜的。100多块钱一年，先买一年的玩玩看。 说起来买服务器主要是想在上面跑一些程序或者放数据库用的，于是就安装了个ubuntu，下载了mysql等一系列东西。 于是就尝试了一下服务器数据库的远程连接。">
-<meta name="keywords" content="Mysql,Server">
+<meta name="description" content="Intro这几天在爬取数据的时候，使用Mysql插入到数据库中时总是会遇到下面这个报错 一开始我不知道这是什么字符，后来打印出来看了一下，哦 原来是个emoji表情，那么这个emoji表情问什么插入不到数据库中呢？">
+<meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云服务器端口连接问题">
-<meta property="og:url" content="http://WJerry0227.github.io/2017/06/16/阿里云服务器端口连接问题/index.html">
+<meta property="og:title" content="关于Emoji表情在mysql数据库下存储问题">
+<meta property="og:url" content="http://WJerry0227.github.io/2017/06/16/emoji-mysql-database/index.html">
 <meta property="og:site_name" content="Jerry Wang&#39;s Blog">
-<meta property="og:description" content="阿里云服务器端口连接一直想自己弄一台服务器，就在阿里云上买了学生价的服务器，还是蛮便宜的。100多块钱一年，先买一年的玩玩看。 说起来买服务器主要是想在上面跑一些程序或者放数据库用的，于是就安装了个ubuntu，下载了mysql等一系列东西。 于是就尝试了一下服务器数据库的远程连接。">
-<meta property="og:image" content="http://wjerry0227.github.io/2017/06/16/阿里云服务器端口连接问题/markdown-img-paste-20170616180518396.png">
-<meta property="og:updated_time" content="2017-06-16T10:07:20.000Z">
+<meta property="og:description" content="Intro这几天在爬取数据的时候，使用Mysql插入到数据库中时总是会遇到下面这个报错 一开始我不知道这是什么字符，后来打印出来看了一下，哦 原来是个emoji表情，那么这个emoji表情问什么插入不到数据库中呢？">
+<meta property="og:updated_time" content="2017-06-16T12:04:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里云服务器端口连接问题">
-<meta name="twitter:description" content="阿里云服务器端口连接一直想自己弄一台服务器，就在阿里云上买了学生价的服务器，还是蛮便宜的。100多块钱一年，先买一年的玩玩看。 说起来买服务器主要是想在上面跑一些程序或者放数据库用的，于是就安装了个ubuntu，下载了mysql等一系列东西。 于是就尝试了一下服务器数据库的远程连接。">
-<meta name="twitter:image" content="http://wjerry0227.github.io/2017/06/16/阿里云服务器端口连接问题/markdown-img-paste-20170616180518396.png">
+<meta name="twitter:title" content="关于Emoji表情在mysql数据库下存储问题">
+<meta name="twitter:description" content="Intro这几天在爬取数据的时候，使用Mysql插入到数据库中时总是会遇到下面这个报错 一开始我不知道这是什么字符，后来打印出来看了一下，哦 原来是个emoji表情，那么这个emoji表情问什么插入不到数据库中呢？">
 
 
 
@@ -133,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://WJerry0227.github.io/2017/06/16/阿里云服务器端口连接问题/"/>
+  <link rel="canonical" href="http://WJerry0227.github.io/2017/06/16/emoji-mysql-database/"/>
 
 
 
 
 
-  <title>阿里云服务器端口连接问题 | Jerry Wang's Blog</title>
+  <title>关于Emoji表情在mysql数据库下存储问题 | Jerry Wang's Blog</title>
   
 
 
@@ -268,7 +266,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2017/06/16/阿里云服务器端口连接问题/">
+    <link itemprop="mainEntityOfPage" href="http://WJerry0227.github.io/2017/06/16/emoji-mysql-database/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jerry Wang">
@@ -285,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">阿里云服务器端口连接问题</h1>
+          <h1 class="post-title" itemprop="name headline">关于Emoji表情在mysql数据库下存储问题</h1>
         
 
         <div class="post-meta">
@@ -297,7 +295,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-16T17:43:31+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-16T19:52:51+08:00">
                 2017-06-16
               </time>
             
@@ -338,9 +336,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/16/阿里云服务器端口连接问题/#comments" itemprop="discussionUrl">
+                <a href="/2017/06/16/emoji-mysql-database/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/16/阿里云服务器端口连接问题/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/06/16/emoji-mysql-database/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -365,53 +363,35 @@
       
 
       
-        <h2 id="阿里云服务器端口连接"><a href="#阿里云服务器端口连接" class="headerlink" title="阿里云服务器端口连接"></a>阿里云服务器端口连接</h2><p>一直想自己弄一台服务器，就在阿里云上买了学生价的服务器，还是蛮便宜的。100多块钱一年，先买一年的玩玩看。</p>
-<p>说起来买服务器主要是想在上面跑一些程序或者放数据库用的，于是就安装了个ubuntu，下载了mysql等一系列东西。</p>
-<p>于是就尝试了一下服务器数据库的远程连接。</p>
+        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>这几天在爬取数据的时候，使用Mysql插入到数据库中时<br>总是会遇到下面这个报错</p>
+<p>一开始我不知道这是什么字符，后来打印出来看了一下，哦 原来是个emoji表情，那么这个emoji表情问什么插入不到数据库中呢？</p>
 <a id="more"></a>
-<h2 id="开始尝试"><a href="#开始尝试" class="headerlink" title="开始尝试"></a>开始尝试</h2><p>最开始先在网上找怎样配置，很多教程。</p>
-<ul>
-<li>第一步</li>
-</ul>
 <blockquote>
-<p>mysql -u root -p</p>
+<p>Incorrect string value: ‘\xF0\x9F\x92\xAA”,…’ for column ‘raw_json’ at row 1</p>
 </blockquote>
-<p>输入密码进入mysql</p>
+<h2 id="Reason"><a href="#Reason" class="headerlink" title="Reason"></a>Reason</h2><p>我们的数据库里面一般都是使用utf8编码，普通的字符串或者表情都是占位3个字节，所以utf8足够用了，但是移动端的表情符号占位是4个字节，普通的utf8就不够用了。</p>
+<p>为了应对无线互联网的机遇和挑战、避免 emoji 表情符号带来的问题、涉及无线相关的 MySQL 数据库建议都提前采用utf8mb4 字符集，这必须要作为移动互联网行业的一个技术选型的要点。</p>
+<p>给一个标准的解决方案：</p>
+<p><strong>mysql的版本必须为v5.5.3或更高</strong></p>
+<p>把数据库的编码改成utf8mb4 – UTF-8 Unicode<br>然后需要存储emoji表情的字段选择utf8mb4_general_ci<br>数据库连接也需要改为utf8mb4</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>以下为在ubuntu16.04下的修改方案：</p>
 <blockquote>
-<p>grant all privileges on <em>.</em> to root@”%” identified by “password” with grant option;</p>
+<p>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
 </blockquote>
-<p>输入上面的指令，其中 <strong>password</strong> 表示你远程登录mysql的密码 <strong>root</strong> 表示远程登录的账户名，<strong>%</strong> 表示所有的IP都可以访问登录。如果只希望特定的IP可以在这里将特定IP替换掉<strong>%</strong></p>
+<p>打开这个文件…我也不知道为什么和网上的mysql路径不太一样<br>在[mysqld]下面插入这句话</p>
 <blockquote>
-<p>flush privileges;</p>
+<p>character-set-server=utf8mb4</p>
 </blockquote>
-<p>刷新权限信息</p>
-<ul>
-<li>第二步</li>
-</ul>
+<p>然后保存关闭再打开下面这个文件</p>
 <blockquote>
-<p>sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf</p>
+<p>sudo vim /etc/mysql/conf.d/mysql.cnf</p>
 </blockquote>
-<p>找到bind-address = 127.0.0.1 注释掉变为这样</p>
+<p>随便在哪插入这句话</p>
 <blockquote>
-<p># bind-address = 127.0.0.1</p>
+<p>default-character-set=utf8mb4</p>
 </blockquote>
-<p>保存退出以后重启mysql服务</p>
-<blockquote>
-<p>sudo /etc/init.d/mysql restart</p>
-</blockquote>
-<h2 id="失败"><a href="#失败" class="headerlink" title="失败"></a>失败</h2><p>按照网上的尝试，到这一步以后应该就可连接了，可是我是尝试了又重试，总是显示timeout<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mysql: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</div><div class="line">ERROR 2003 (HY000): Can<span class="string">'t connect to MySQL server on '</span>*.*.*.*<span class="string">' (60)</span></div></pre></td></tr></table></figure></p>
-<p>当然很郁闷,于是只好各种找办法</p>
-<blockquote>
-<p>sudo ufw disable 关闭防火墙 。无效<br>netstat -tln 查看哪些端口被使用了 查到了3306没什么毛病 。无效</p>
-</blockquote>
-<p>最后还尝试了各种重启什么的办法都失败了。发现居然远程</p>
-<blockquote>
-<p>telnet [ipaddress] 3306</p>
-</blockquote>
-<p>都失败了，我试了一下在服务器上是可以telnet到自己的</p>
-<p>瞬间想到了服务器是在阿里云上，应该是阿里云对端口访问有一个安全限制，上去云服务器一看果然…</p>
-<p><img src="/2017/06/16/阿里云服务器端口连接问题/markdown-img-paste-20170616180518396.png" alt=""><br>有一个安全组限制的设置，设置一下入方向可以允许3306端口再尝试以下，瞬间就好了…</p>
-<p>这种奇怪的问题完全是自己没有经验，浪费了很久时间，记录一下</p>
+<h2 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h2><p>设置完成后，应该可以看到如下类似字符集设置结果。那么可以直接的存入数据库，无需做任何额外的事情了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW VARIABLES WHERE Variable_name LIKE <span class="string">'character\_set\_%'</span> OR Variable_name LIKE <span class="string">'collation%'</span>;  </div><div class="line">+--------------------------+--------------------+  </div><div class="line">| Variable_name            | Value              |  </div><div class="line">+--------------------------+--------------------+  </div><div class="line">| character_set_client     | utf8mb4            |  </div><div class="line">| character_set_connection | utf8mb4            |  </div><div class="line">| character_set_database   | utf8mb4            |  </div><div class="line">| character_set_filesystem | binary             |  </div><div class="line">| character_set_results    | utf8mb4            |  </div><div class="line">| character_set_server     | utf8mb4            |  </div><div class="line">| character_set_system     | utf8               |  </div><div class="line">| collation_connection     | utf8mb4_unicode_ci |  </div><div class="line">| collation_database       | utf8mb4_unicode_ci |  </div><div class="line">| collation_server         | utf8mb4_unicode_ci |  </div><div class="line">+--------------------------+--------------------+  </div><div class="line"> rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -443,8 +423,6 @@
           
             <a href="/tags/Mysql/" rel="tag"># Mysql</a>
           
-            <a href="/tags/Server/" rel="tag"># Server</a>
-          
         </div>
       
 
@@ -456,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/15/爬取网易云音乐评论/" rel="next" title="爬取网易云音乐评论">
-                <i class="fa fa-chevron-left"></i> 爬取网易云音乐评论
+              <a href="/2017/06/16/阿里云服务器端口连接问题/" rel="next" title="阿里云服务器端口连接问题">
+                <i class="fa fa-chevron-left"></i> 阿里云服务器端口连接问题
               </a>
             
           </div>
@@ -465,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/16/emoji-mysql-database/" rel="prev" title="关于Emoji表情在mysql数据库下存储问题">
-                关于Emoji表情在mysql数据库下存储问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -615,7 +589,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#阿里云服务器端口连接"><span class="nav-number">1.</span> <span class="nav-text">阿里云服务器端口连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始尝试"><span class="nav-number">2.</span> <span class="nav-text">开始尝试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#失败"><span class="nav-number">3.</span> <span class="nav-text">失败</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reason"><span class="nav-number">2.</span> <span class="nav-text">Reason</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">4.</span> <span class="nav-text">Test</span></a></li></ol></div>
             
 
           </div>
@@ -758,9 +732,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://WJerry0227.github.io/2017/06/16/阿里云服务器端口连接问题/';
-          this.page.identifier = '2017/06/16/阿里云服务器端口连接问题/';
-          this.page.title = '阿里云服务器端口连接问题';
+          this.page.url = 'http://WJerry0227.github.io/2017/06/16/emoji-mysql-database/';
+          this.page.identifier = '2017/06/16/emoji-mysql-database/';
+          this.page.title = '关于Emoji表情在mysql数据库下存储问题';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://wjerry0227.disqus.com/embed.js';
