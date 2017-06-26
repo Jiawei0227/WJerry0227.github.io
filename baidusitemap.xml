@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://wjerry.top/2017/06/26/Android-Task/</loc>
+    <lastmod>2017-06-26T08:01:33.000Z</lastmod>
+    <data>
+        <display>
+        <title>Android实战杂记</title>
+        <pubTime>2017-06-26T07:27:23.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+             
+              <breadCrumb title="Programing" url="http://wjerry.top/categories/Programing/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://wjerry.top/2017/06/17/Crawl-Netease-Music/</loc>
-    <lastmod>2017-06-25T09:36:02.000Z</lastmod>
+    <lastmod>2017-06-26T07:30:49.000Z</lastmod>
     <data>
         <display>
         <title>爬取网易云音乐评论2</title>
@@ -193,9 +213,9 @@
         <title>Python&Pip Install Ascii Error</title>
         <pubTime>2016-05-11T05:45:20.000Z</pubTime>
         
-        <tag>Bugs</tag>
-         
         <tag>Python</tag>
+         
+        <tag>Bugs</tag>
          
          
            
