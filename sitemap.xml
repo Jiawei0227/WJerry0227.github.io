@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wjerry.top/404.html</loc>
+    
+    <lastmod>2017-11-08T15:17:13.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wjerry.top/2017/10/25/GitHub-API/</loc>
     
     <lastmod>2017-11-07T13:27:32.000Z</lastmod>
@@ -131,13 +138,6 @@
     <loc>http://wjerry.top/categories/index.html</loc>
     
     <lastmod>2017-06-14T08:42:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wjerry.top/404.html</loc>
-    
-    <lastmod>2017-06-14T08:39:53.000Z</lastmod>
     
   </url>
   
