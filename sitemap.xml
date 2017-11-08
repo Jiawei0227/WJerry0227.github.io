@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wjerry.top/2017/10/10/TheadPool-Task/</loc>
+    
+    <lastmod>2017-11-08T15:55:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wjerry.top/2017/11/01/ReactJS-SpringMVC-Java-Docker-Configuration/</loc>
+    
+    <lastmod>2017-11-08T15:54:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wjerry.top/404.html</loc>
     
     <lastmod>2017-11-08T15:17:13.000Z</lastmod>
@@ -16,23 +30,9 @@
   </url>
   
   <url>
-    <loc>http://wjerry.top/2017/11/01/ReactJS-SpringMVC-Java-Docker-Configuration/</loc>
-    
-    <lastmod>2017-11-07T13:27:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://wjerry.top/2017/11/07/ReactJS-HTTP-Request-RESTful-Java/</loc>
     
     <lastmod>2017-11-07T13:25:37.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wjerry.top/2017/10/10/TheadPool-Task/</loc>
-    
-    <lastmod>2017-11-07T13:20:24.000Z</lastmod>
     
   </url>
   
